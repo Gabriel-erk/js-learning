@@ -39,8 +39,3 @@ produtos.forEach((produto) => {
 console.log("");
 
 console.log(`Produto mais lucrativo: ${nomeMaiorProduto} com R\$ ${precoMaiorProduto} em vendas.`);
-
-
-
-
-
