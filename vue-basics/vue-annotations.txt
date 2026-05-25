@@ -1,0 +1,4 @@
+** todos os comandos abaixo necessitam serem executados dentro de um projeto vue **
+
+tree == gerar estrutura atual de pastas em forma de texto do projeto
+tree /f (no windows) == para mostrar os nomed dos arquivos tbm
