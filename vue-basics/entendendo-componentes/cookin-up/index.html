@@ -12,11 +12,16 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&family=Paytone+One&display=swap"
     rel="stylesheet">
-
 </head>
 
+<!-- no momento atual, existe um conteúdo sendo exibido nesta página aqui, pois, o vue usa JS para inserir conteúdo dinamicamente NESTE arquivo aqui (tanto que, se executarmos: npm run dev ele aparecerá um conteúdo NESTA página aqui, que nós NÃO inserimos manualmente) -->
 <body>
   <div id="app"></div>
+  <!-- type="module" diz ao navegador: esse script é um modulo JS moderno -->
+  <!-- com módulos, cada arquivo VIRA seu próprio "espaço privado" -->
+  <!-- type="module" permite principalmente: comandos import e export dentro dos arquivos, graćas a especificaćão de: type="module" eu posso usar comandos de import e export dentro de: main.ts que o navegador NÃO vai reclamar pois ele sabe que o arquivo é um módulo  -->
+  <!-- ao utilizar type="module" o navegador permite usar import/export, váriaveis não vazam para o escopo global (não vão parar no window.nome), executa no modo strict automaticamente (como se tivesse use strict ativado sozinho, deixando o JS mai seguro), baixa dependências automaticamente, logo se main.ts importar outros arquivos, o navegador baixa eles também, scripts com type="module" são deferidos automaticamente (em um script normal, sem module, pode bloquear o carregamente da página), já módulos (com type="module" src"arquivoJSouTSqueVaiSerConsideradoUmModulo) esperam o HTML terminarl o carregamento primeiro, como se tivesse: <script defer> automaticamente-->
+  <!-- resumo da linha abaixo: carregue esse aruivo TS como um módulo JS moderno, permitindo import, export e organizaćão modular de código -->
   <script type="module" src="/src/main.ts"></script>
 </body>
 
