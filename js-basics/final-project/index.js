@@ -15,7 +15,7 @@ function exibirAluno(aluno) {
       : media >= 5 && media <= 6.9
         ? "Recuperation"
         : "Reproved"; // if ternário com SE, SE NÃO SE e SENÃO
-
+  console.log(`RA: ${aluno.ra}`);
   console.log(`Aluno: ${aluno.nome}`);
   console.log(`Idade: ${aluno.idade}`);
   console.log(`Média: ${media}`);
@@ -27,25 +27,44 @@ function relatorioAlunos(alunos) {
   alunos.forEach((aluno) => {
     exibirAluno(aluno);
     console.log("-------------------");
-    
   });
 }
 
-function buscarAluno(nome, alunos){
-    found = false;
-    alunoProcurado = {}
+function buscarAluno(ra, alunos) {
+  let found = false;
+  let alunoProcurado = {};
 
-    alunos.forEach(aluno => {
-        if (aluno.nome == nome) {
-            found = true;
-            alunoProcurado = aluno;
-        }
-    });
-
-    if (found) {
-        return alunoProcurado;
+  alunos.forEach((aluno) => {
+    if (aluno.ra == ra) {
+      found = true;
+      alunoProcurado = aluno;
     }
-    return found;
+  });
+
+  if (found) {
+    return alunoProcurado;
+  }
+  return found;
+}
+
+function adicionarNota(aluno, nota) {
+  if (aluno.notas.length < 5) {
+    aluno.notas.push(nota);
+    return true;
+  }
+  return false;
+}
+
+function listarMelhoresAluno(alunos) {
+  console.log("\n ===== MELHORES ALUNOS =====");
+
+  alunos.forEach((aluno) => {
+    let media = calcularMedia(aluno.notas);
+
+    if (media >= 8) {
+      exibirAluno(aluno);
+    }
+  });
 }
 
 let alunos = [];
@@ -53,6 +72,7 @@ let alunos = [];
 // cada aluno deve ser um objeto contendo: nome, idade e notas (array de números)
 
 for (let i = 0; i < 10; i++) {
+  let ra = 102020 + i;
   let nome = `Aluno ${i + 1}`;
   let idade = 10 + i;
   let notas = [];
@@ -62,19 +82,33 @@ for (let i = 0; i < 10; i++) {
   }
 
   alunos[i] = {
+    ra: ra,
     nome: nome,
     idade: idade,
     notas: notas,
   };
 }
 
-console.log("BUSCANDO ALUNO:");
-
 relatorioAlunos(alunos);
-alunoProcurado = buscarAluno("Aluno 10", alunos)
+
+console.log("\n ===== BUSCANDO ALUNO =====");
+alunoProcurado = buscarAluno(102021, alunos);
 
 if (alunoProcurado != false) {
-    exibirAluno(alunoProcurado);
+  exibirAluno(alunoProcurado);
 } else {
-    console.log("Aluno não está na lista.");
+  console.log("Aluno não está na lista.");
 }
+
+console.log("\n ===== ADICIONANDO NOTA =====");
+
+console.log(`Notas antes de adicionar: ${alunoProcurado.notas}`);
+
+if (adicionarNota(alunoProcurado, 5.5)) {
+  console.log("Nota adicionada com sucesso!");
+  console.log(alunoProcurado.notas);
+} else {
+  console.log("Não foi possível adicionar a nota.");
+}
+
+listarMelhoresAluno(alunos);
