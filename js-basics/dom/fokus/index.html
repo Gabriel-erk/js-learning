@@ -15,6 +15,11 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Prata&family=Unbounded:wght@200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="./styles.css">
+    <!-- defer == adiar/atrasar (em português) -->
+    <!-- ela faz com que, quando a página for carregada no navegador, toda a página html seja carregada (o que está em meu head, body, tag style(se houver)...etc) e por ÚLTIMO, carregue esta linha, ou seja, por último ele irá carregar está linha que aponta para nosso arquivo que controlará a LÓGICA deste arquivo, o nosso arquivo JS (por último será lido nosso arquivo JS, como tem que ser ) -->
+    <!-- sem o defer, o navegador pode travar e aumentar o tempo de carregamento da página pois o navegador perderá um tempo MAIOR lendo o arquivo js (ainda mais dependendo da complexidade lógica implementada nele) e só depois irá carregar os elementos visuais como: html, css, bootstrap... -->
+    <!-- geralmente este caminho/chamada para nosso arquivo js fica no final do body, mas esta é outra forma de usa-lo (prática nova e recomendada) -->
+    <script src="./script.js" defer></script>
 </head>
 
 <body>
@@ -37,13 +42,16 @@
             <div class="app__card">
                 <ul class="app__card-list">
                     <li class="app__card-list-item">
-                        <button data-contexto="foco" class="app__card-button app__card-button--foco active">Foco</button>
+                        <button data-contexto="foco"
+                            class="app__card-button app__card-button--foco active">Foco</button>
                     </li>
                     <li class="app__card-list-item">
-                        <button data-contexto="short" class="app__card-button app__card-button--curto">Descanso curto</button>
+                        <button data-contexto="short" class="app__card-button app__card-button--curto">Descanso
+                            curto</button>
                     </li>
                     <li class="app__card-list-item">
-                        <button data-contexto="long" class="app__card-button app__card-button--longo">Descanso longo</button>
+                        <button data-contexto="long" class="app__card-button app__card-button--longo">Descanso
+                            longo</button>
                     </li>
                 </ul>
                 <div id="timer" class="app__card-timer"></div>
@@ -71,7 +79,7 @@
 
         <footer class="app__footer">
             <p class="app__footer-text">
-                Projeto fictício e sem fins comerciais. Imagens geradas por IA no Adobe Firefly.Desenvolvido por Alura. 
+                Projeto fictício e sem fins comerciais. Imagens geradas por IA no Adobe Firefly.Desenvolvido por Alura.
             </p>
         </footer>
     </main>
