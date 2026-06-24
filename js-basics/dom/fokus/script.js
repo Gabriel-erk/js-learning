@@ -4,6 +4,16 @@ const focoBt = document.querySelector('.app__card-button--foco');
 const curtoBt = document.querySelector('.app__card-button--curto');
 const longoBt = document.querySelector('.app__card-button--longo');
 
+const displayTempo = document.querySelector('#timer');
+const banner = document.querySelector('.app__image');
+const titulo = document.querySelector('.app__title');
+
+const botaoIniciar = document.querySelector('.app__card-primary-button');
+
+const duracaoFoco = 1500; 
+const duracaoDescansoCurto = 300; 
+const duracaoDescansoLongo = 900;
+
 focoBt.addEventListener('click', () => {
     // quando acontecer o evento do tipo click neste botão, quero MUDAR o atributo (por isso set, que diz que eu vou PASSAR um outro valor) e ele pede 2 parâmetros
     // obs rápida: possuo um atributo na minha tag html chamado de data-contexto, posso vê-lo aqui: <html lang="pt-br" data-contexto="foco">, isso é o que chamamos de atributos, ou data attributes
@@ -12,10 +22,10 @@ focoBt.addEventListener('click', () => {
     html.setAttribute('data-contexto', 'foco');
 });
 
-curtoBt = document.addEventListener('click', () => {
+curtoBt.addEventListener('click', () => {
     html.setAttribute('data-contexto', 'descanso-curto');
 });
 
-longoBt = document.addEventListener('click', () => {
+longoBt.addEventListener('click', () => {
     html.setAttribute('data-contexto', 'descanso-longo');
 });
