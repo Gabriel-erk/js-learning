@@ -20,12 +20,17 @@ focoBt.addEventListener('click', () => {
     // sendo o primeiro: QUAL atributo eu quero mudar? nesse caso aqui, quero mudar o valor do atributo 'data-contexto'
     // e o segundo: QUAL o valor novo deste atributo (data-contexto)?
     html.setAttribute('data-contexto', 'foco');
+    // aqui dentro da minha váriavel banner (que possui a classe da minha tag html img) vou alterar o ATRIBUTO src == caminho da imagem (pois quero mudar o caminho da imagem da tag html img que possui a classe que minha váriavel abaixo (banner) está maniuplando)
+    // de segundo valor do meu método setAttribute vem o VALOR do atributo selecionado no primeiro parâmetro (que agora eu passo o novo caminho do atributo passado no primeiro parâmetro, toda vez que eu clicar neste botão de FOCO (que é o event listener envolta do que estou escrevendo, vai trocar a imagem para o caminho que estou passando abaixo))
+    banner.setAttribute('src', '/imagens/foco.png');
 });
 
 curtoBt.addEventListener('click', () => {
     html.setAttribute('data-contexto', 'descanso-curto');
+    banner.setAttribute('src', 'imagens/descanso-curto.png')
 });
 
 longoBt.addEventListener('click', () => {
     html.setAttribute('data-contexto', 'descanso-longo');
+    banner.setAttribute('src', '/imagens/descanso-longo.png')
 });
